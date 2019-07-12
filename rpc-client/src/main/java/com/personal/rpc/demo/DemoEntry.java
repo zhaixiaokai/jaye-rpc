@@ -1,7 +1,8 @@
 package com.personal.rpc.demo;
 
 import com.personal.rpc.client.RpcClientFactory;
-import com.personal.rpc.client.RpcNettyClient;
+
+import java.io.IOException;
 
 /**
  * @ClassName DemoEntry
@@ -11,13 +12,12 @@ import com.personal.rpc.client.RpcNettyClient;
  * @Version 1.0
  **/
 public class DemoEntry {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        RpcNettyClient nettyClient = new RpcNettyClient();
-        nettyClient.doClient();
         IService client = RpcClientFactory.getClient(IService.class);
         for (int i = 0; i < 10; i++) {
             client.greet("xiaokai"+i);
         }
+        System.in.read();
     }
 }

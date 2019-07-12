@@ -1,21 +1,22 @@
 package com.personal.rpc.client;
 
-import com.personal.rpc.client.executor.ClientTaskExecutor;
-import com.personal.rpc.client.initializers.SimpleClientInitilizer;
-import com.personal.rpc.client.util.CallUtil;
-import com.personal.rpc.constant.Constant;
-import com.personal.rpc.invocation.RpcInvocation;
+import com.personal.rpc.client.handlers.NettyChannelPoolHandler;
+import com.personal.rpc.transport.protocol.protobuf.TransportMessage;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.pool.AbstractChannelPoolMap;
+import io.netty.channel.pool.ChannelPoolMap;
+import io.netty.channel.pool.FixedChannelPool;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.FutureListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.regex.Pattern;
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
 
 /**
  * @ClassName RpcClient
@@ -26,62 +27,48 @@ import java.util.regex.Pattern;
  **/
 public class RpcNettyClient {
     private final static Logger logger = LoggerFactory.getLogger(RpcNettyClient.class);
-    private String ip = "127.0.0.1";
-    private Integer port = 8080;
+    private ChannelPoolMap<InetSocketAddress, FixedChannelPool> poolMap;
 
-    public RpcNettyClient() {
+    private static RpcNettyClient instance = new RpcNettyClient();
+    private Bootstrap bootStarp;
 
-    }
-
-    public RpcNettyClient(String ip, Integer port) {
-        if (!Pattern.compile(Constant.REG_IP).matcher(ip).matches()) {
-            throw new IllegalArgumentException("ip");
-        }
-        if (port == null || port < 0) {
-            throw new IllegalArgumentException("port");
-        }
-        this.ip = ip;
-        this.port = port;
-    }
-
-    public void doClient() {
-
+    private RpcNettyClient() {
+        this.bootStarp = new Bootstrap();
+        poolMap = new AbstractChannelPoolMap<InetSocketAddress, FixedChannelPool>() {
+            @Override
+            protected FixedChannelPool newPool(InetSocketAddress inetSocketAddress) {
+                return new FixedChannelPool(bootStarp.remoteAddress(inetSocketAddress), new NettyChannelPoolHandler(), 5);
+            }
+        };
         EventLoopGroup group = new NioEventLoopGroup();
+        bootStarp.group(group).channel(NioSocketChannel.class);
+    }
+
+    public static RpcNettyClient getInstance() {
+        return instance;
+    }
+
+    public void doRequest() {
         try {
-            Bootstrap b = new Bootstrap();
-            b.group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new SimpleClientInitilizer());
+            FixedChannelPool pool = poolMap.get(new InetSocketAddress("127.0.0.1", 8080));
 
-            // Start the connection attempt.
-            Channel ch = b.connect(this.ip, this.port).sync().channel();
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            ClientTaskExecutor.doTask(new Runnable() {
+            Future<Channel> future = pool.acquire();
+
+            final FixedChannelPool finalPool = pool;
+            future.addListener(new FutureListener<Channel>() {
+
                 @Override
-                public void run() {
-                    boolean flag = true;
-                    while (flag) {
-                        if (CallUtil.getQuereSize() > 0) {
-                            RpcInvocation invocation = CallUtil.getTask();
-                            logger.info("send invoaction : {}", invocation);
-
-                            ch.write(invocation+"$_$");
-                            ch.flush();
-                        }
-                    }
-                    try {
-                        ch.closeFuture().sync();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        group.shutdownGracefully();
+                public void operationComplete(Future<Channel> future) throws Exception {
+                    if (future.isSuccess()) {
+                        Channel channel = (Channel) future.getNow();
+                        TransportMessage.Message msg = TransportMessage.Message.newBuilder().setClassName("com.xiaokai.test").setMethodName("sayhello").addAllArgs(new ArrayList<>()).build();
+                        channel.writeAndFlush(msg);
+                        finalPool.release(channel);
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
         }
     }
 }
-

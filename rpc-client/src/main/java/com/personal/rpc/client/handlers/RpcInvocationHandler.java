@@ -1,7 +1,6 @@
 package com.personal.rpc.client.handlers;
 
-import com.personal.rpc.client.util.CallUtil;
-import com.personal.rpc.invocation.RpcInvocation;
+import com.personal.rpc.client.RpcNettyClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,13 +26,14 @@ public class RpcInvocationHandler<T> implements InvocationHandler {
 
     @Override
     public T invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        RpcInvocation invocation = new RpcInvocation();
-        invocation.setArgs(args);
-        invocation.setMethod(method);
-        invocation.setObject(proxy);
-        invocation.setClazz(iService);
-
-        CallUtil.putTask(invocation);
+//        RpcInvocation invocation = new RpcInvocation();
+//        invocation.setArgs(args);
+//        invocation.setMethod(method);
+//        invocation.setObject(proxy);
+//        invocation.setClazz(iService);
+//
+//        CallUtil.putTask(invocation);
+        RpcNettyClient.getInstance().doRequest();
         return null;
     }
 
