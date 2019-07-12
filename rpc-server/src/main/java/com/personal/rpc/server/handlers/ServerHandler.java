@@ -1,9 +1,11 @@
 package com.personal.rpc.server.handlers;
 
-import com.alibaba.fastjson.JSONObject;
-import com.personal.rpc.transport.protocol.protobuf.TransportMessage;
+import com.personal.rpc.transport.protocol.protobuf.RpcTransportRequest;
+import com.personal.rpc.transport.protocol.protobuf.RpcTransportResponse;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @ClassName ServerHandler
@@ -13,15 +15,15 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @Version 1.0
  **/
 public class ServerHandler extends SimpleChannelInboundHandler<Object> {
+    private final static Logger logger = LoggerFactory.getLogger(ServerHandler.class);
+    private RpcTransportRequest.Request request;
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-
-        System.err.println("server:" + JSONObject.toJSONString(msg));
-        TransportMessage.Message message = (TransportMessage.Message) msg;
-        System.out.println(message.getClassName());
-        System.out.println(message.getArgsList());
-        System.out.println(message.getMethodName());
-        ctx.writeAndFlush(msg);
+        logger.debug(String.valueOf(msg));
+        RpcTransportRequest.Request request = (RpcTransportRequest.Request) msg;
+        this.request = request;
+        RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder().setUid(request.getUid()).build();
+        ctx.writeAndFlush(response);
     }
 
     @Override

@@ -26,15 +26,7 @@ public class RpcInvocationHandler<T> implements InvocationHandler {
 
     @Override
     public T invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        RpcInvocation invocation = new RpcInvocation();
-//        invocation.setArgs(args);
-//        invocation.setMethod(method);
-//        invocation.setObject(proxy);
-//        invocation.setClazz(iService);
-//
-//        CallUtil.putTask(invocation);
-        RpcNettyClient.getInstance().doRequest();
-        return null;
+        return RpcNettyClient.getInstance().doRequest();
     }
 
 

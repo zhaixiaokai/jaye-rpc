@@ -1,0 +1,13 @@
+syntax = "proto2"; // PB协议版本
+import "google/protobuf/any.proto";
+
+option optimize_for = LITE_RUNTIME;
+
+option java_package = "com.personal.rpc.transport.protocol.protobuf"; // 生成类的包名
+option java_outer_classname = "RpcTransportResponse"; // 生成类的类名
+
+message Response {
+    required string uid = 1;
+    optional google.protobuf.Any body = 2;
+
+}

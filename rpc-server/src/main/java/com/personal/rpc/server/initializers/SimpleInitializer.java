@@ -1,7 +1,7 @@
 package com.personal.rpc.server.initializers;
 
 import com.personal.rpc.server.handlers.ServerHandler;
-import com.personal.rpc.transport.protocol.protobuf.TransportMessage;
+import com.personal.rpc.transport.protocol.protobuf.RpcTransportRequest;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -28,7 +28,7 @@ public class SimpleInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = socketChannel.pipeline();
 
         pipeline.addLast(new ProtobufVarint32FrameDecoder())
-                .addLast(new ProtobufDecoder(TransportMessage.Message.getDefaultInstance()))
+                .addLast(new ProtobufDecoder(RpcTransportRequest.Request.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder());
         pipeline.addLast(new ServerHandler());
