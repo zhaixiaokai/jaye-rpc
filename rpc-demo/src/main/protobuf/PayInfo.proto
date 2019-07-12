@@ -1,0 +1,16 @@
+syntax = "proto2";          // PB协议版本
+//import "Common.proto";      // 引入Common.proto，位于Protobuf sdk中
+
+option optimize_for = LITE_RUNTIME;
+
+option java_package = "com.xxxx.entity.pb";    // 生成类的包名
+option java_outer_classname = "PayInfo";       // 生成类的类名
+
+message TestPayInfo{
+	required string payid = 1;             // 支付相关的字段信息
+	optional string goodinfo = 2;          // optional 为可选参数
+	required string prepayid = 3;          // required为必填参数
+	optional string mode = 4;
+//	optional int  userid = 5;
+	repeated string  extra = 5;           // repeated 为数组
+}

@@ -1,0 +1,13 @@
+syntax = "proto2"; // PB协议版本
+//import "Common.proto";      // 引入Common.proto，位于Protobuf sdk中
+
+option optimize_for = LITE_RUNTIME;
+
+option java_package = "com.personal.rpc.transport.protocol.protobuf"; // 生成类的包名
+option java_outer_classname = "TransportMessage"; // 生成类的类名
+
+message Message {
+    required string className = 1;
+    required string methodName = 2;
+    repeated string args = 3;
+}

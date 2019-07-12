@@ -15,17 +15,17 @@ import io.netty.handler.logging.LoggingHandler;
  * @Date 2019/7/10 2:26 PM
  * @Version 1.0
  **/
-public class RpcServer {
+public class RpcNettyServer {
 
     private static Integer DEFAULT_PORT = 8080;
 
     private Integer port;
 
-    public RpcServer() {
+    public RpcNettyServer() {
 
     }
 
-    public RpcServer(Integer port) {
+    public RpcNettyServer(Integer port) {
         this.port = port;
     }
 
@@ -33,7 +33,7 @@ public class RpcServer {
         this.port = port;
     }
 
-    public void serve() throws InterruptedException {
+    public void serve(){
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -41,12 +41,14 @@ public class RpcServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .handler(new LoggingHandler(LogLevel.DEBUG))
                     .childHandler(new SimpleInitializer());
 
             Integer serverPort = this.port == null ? DEFAULT_PORT : port;
             b.bind(serverPort).sync().channel().closeFuture().sync();
-        } finally {
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally{
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }

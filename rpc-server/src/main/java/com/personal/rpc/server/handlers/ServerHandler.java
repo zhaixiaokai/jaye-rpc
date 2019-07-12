@@ -1,5 +1,6 @@
 package com.personal.rpc.server.handlers;
 
+import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -12,7 +13,20 @@ import io.netty.channel.SimpleChannelInboundHandler;
  **/
 public class ServerHandler extends SimpleChannelInboundHandler<Object> {
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object s) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
+        System.err.println("server:" + JSONObject.toJSONString(msg));
+        ctx.writeAndFlush(JSONObject.toJSONString(msg));
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        cause.printStackTrace();
+        ctx.close();
     }
 }

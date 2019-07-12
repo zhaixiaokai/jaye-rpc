@@ -9,7 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rpc-core</artifactId>
+    <artifactId>rpc-demo</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.personal</groupId>
+            <artifactId>rpc-server</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.personal</groupId>
+            <artifactId>rpc-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <resources>
@@ -62,5 +75,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
