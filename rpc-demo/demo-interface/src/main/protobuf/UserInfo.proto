@@ -1,0 +1,15 @@
+syntax = "proto3"; // PB协议版本
+
+option optimize_for = SPEED;
+
+option java_package = "com.personal.rpc.demo.model"; // 生成类的包名
+option java_outer_classname = "UserInfo"; // 生成类的类名
+option java_multiple_files = true;
+
+message User {
+
+    string name = 1;
+    int32 gender = 2;
+    string email = 3;
+
+}

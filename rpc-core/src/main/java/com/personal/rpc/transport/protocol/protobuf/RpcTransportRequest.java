@@ -13,43 +13,31 @@ public final class RpcTransportRequest {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>required string uid = 1;</code>
-     */
-    boolean hasUid();
-    /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     java.lang.String getUid();
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     com.google.protobuf.ByteString
         getUidBytes();
 
     /**
-     * <code>required string className = 2;</code>
-     */
-    boolean hasClassName();
-    /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     java.lang.String getClassName();
     /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     com.google.protobuf.ByteString
         getClassNameBytes();
 
     /**
-     * <code>required string methodName = 3;</code>
-     */
-    boolean hasMethodName();
-    /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     java.lang.String getMethodName();
     /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     com.google.protobuf.ByteString
         getMethodNameBytes();
@@ -106,21 +94,14 @@ public final class RpcTransportRequest {
     public static final int UID_FIELD_NUMBER = 1;
     private java.lang.String uid_;
     /**
-     * <code>required string uid = 1;</code>
-     */
-    @java.lang.Override
-    public boolean hasUid() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getUid() {
       return uid_;
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -128,53 +109,47 @@ public final class RpcTransportRequest {
       return com.google.protobuf.ByteString.copyFromUtf8(uid_);
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void setUid(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
       uid_ = value;
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void clearUid() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      
       uid_ = getDefaultInstance().getUid();
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void setUidBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+      
       uid_ = value.toStringUtf8();
     }
 
     public static final int CLASSNAME_FIELD_NUMBER = 2;
     private java.lang.String className_;
     /**
-     * <code>required string className = 2;</code>
-     */
-    @java.lang.Override
-    public boolean hasClassName() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     @java.lang.Override
     public java.lang.String getClassName() {
       return className_;
     }
     /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -182,53 +157,47 @@ public final class RpcTransportRequest {
       return com.google.protobuf.ByteString.copyFromUtf8(className_);
     }
     /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     private void setClassName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
       className_ = value;
     }
     /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     private void clearClassName() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      
       className_ = getDefaultInstance().getClassName();
     }
     /**
-     * <code>required string className = 2;</code>
+     * <code>string className = 2;</code>
      */
     private void setClassNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+      
       className_ = value.toStringUtf8();
     }
 
     public static final int METHODNAME_FIELD_NUMBER = 3;
     private java.lang.String methodName_;
     /**
-     * <code>required string methodName = 3;</code>
-     */
-    @java.lang.Override
-    public boolean hasMethodName() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     @java.lang.Override
     public java.lang.String getMethodName() {
       return methodName_;
     }
     /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -236,32 +205,33 @@ public final class RpcTransportRequest {
       return com.google.protobuf.ByteString.copyFromUtf8(methodName_);
     }
     /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     private void setMethodName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
       methodName_ = value;
     }
     /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     private void clearMethodName() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      
       methodName_ = getDefaultInstance().getMethodName();
     }
     /**
-     * <code>required string methodName = 3;</code>
+     * <code>string methodName = 3;</code>
      */
     private void setMethodNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+      
       methodName_ = value.toStringUtf8();
     }
 
@@ -348,7 +318,8 @@ public final class RpcTransportRequest {
       if (value == null) {
     throw new NullPointerException();
   }
-  ensureArgsTypeIsMutable();
+  checkByteStringIsUtf8(value);
+      ensureArgsTypeIsMutable();
       argsType_.add(value.toStringUtf8());
     }
 
@@ -478,13 +449,13 @@ public final class RpcTransportRequest {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (!uid_.isEmpty()) {
         output.writeString(1, getUid());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (!className_.isEmpty()) {
         output.writeString(2, getClassName());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!methodName_.isEmpty()) {
         output.writeString(3, getMethodName());
       }
       for (int i = 0; i < argsType_.size(); i++) {
@@ -502,15 +473,15 @@ public final class RpcTransportRequest {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (!uid_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(1, getUid());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (!className_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(2, getClassName());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!methodName_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(3, getMethodName());
       }
@@ -628,21 +599,14 @@ public final class RpcTransportRequest {
 
 
       /**
-       * <code>required string uid = 1;</code>
-       */
-      @java.lang.Override
-      public boolean hasUid() {
-        return instance.hasUid();
-      }
-      /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       @java.lang.Override
       public java.lang.String getUid() {
         return instance.getUid();
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -650,7 +614,7 @@ public final class RpcTransportRequest {
         return instance.getUidBytes();
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder setUid(
           java.lang.String value) {
@@ -659,7 +623,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder clearUid() {
         copyOnWrite();
@@ -667,7 +631,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder setUidBytes(
           com.google.protobuf.ByteString value) {
@@ -677,21 +641,14 @@ public final class RpcTransportRequest {
       }
 
       /**
-       * <code>required string className = 2;</code>
-       */
-      @java.lang.Override
-      public boolean hasClassName() {
-        return instance.hasClassName();
-      }
-      /**
-       * <code>required string className = 2;</code>
+       * <code>string className = 2;</code>
        */
       @java.lang.Override
       public java.lang.String getClassName() {
         return instance.getClassName();
       }
       /**
-       * <code>required string className = 2;</code>
+       * <code>string className = 2;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -699,7 +656,7 @@ public final class RpcTransportRequest {
         return instance.getClassNameBytes();
       }
       /**
-       * <code>required string className = 2;</code>
+       * <code>string className = 2;</code>
        */
       public Builder setClassName(
           java.lang.String value) {
@@ -708,7 +665,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string className = 2;</code>
+       * <code>string className = 2;</code>
        */
       public Builder clearClassName() {
         copyOnWrite();
@@ -716,7 +673,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string className = 2;</code>
+       * <code>string className = 2;</code>
        */
       public Builder setClassNameBytes(
           com.google.protobuf.ByteString value) {
@@ -726,21 +683,14 @@ public final class RpcTransportRequest {
       }
 
       /**
-       * <code>required string methodName = 3;</code>
-       */
-      @java.lang.Override
-      public boolean hasMethodName() {
-        return instance.hasMethodName();
-      }
-      /**
-       * <code>required string methodName = 3;</code>
+       * <code>string methodName = 3;</code>
        */
       @java.lang.Override
       public java.lang.String getMethodName() {
         return instance.getMethodName();
       }
       /**
-       * <code>required string methodName = 3;</code>
+       * <code>string methodName = 3;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -748,7 +698,7 @@ public final class RpcTransportRequest {
         return instance.getMethodNameBytes();
       }
       /**
-       * <code>required string methodName = 3;</code>
+       * <code>string methodName = 3;</code>
        */
       public Builder setMethodName(
           java.lang.String value) {
@@ -757,7 +707,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string methodName = 3;</code>
+       * <code>string methodName = 3;</code>
        */
       public Builder clearMethodName() {
         copyOnWrite();
@@ -765,7 +715,7 @@ public final class RpcTransportRequest {
         return this;
       }
       /**
-       * <code>required string methodName = 3;</code>
+       * <code>string methodName = 3;</code>
        */
       public Builder setMethodNameBytes(
           com.google.protobuf.ByteString value) {
@@ -952,7 +902,6 @@ public final class RpcTransportRequest {
 
       // @@protoc_insertion_point(builder_scope:Request)
     }
-    private byte memoizedIsInitialized = 2;
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
     protected final java.lang.Object dynamicMethod(
@@ -966,22 +915,7 @@ public final class RpcTransportRequest {
           return new Builder();
         }
         case IS_INITIALIZED: {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized == 1) return DEFAULT_INSTANCE;
-          if (isInitialized == 0) return null;
-
-          boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-          if (!hasUid()) {
-            return null;
-          }
-          if (!hasClassName()) {
-            return null;
-          }
-          if (!hasMethodName()) {
-            return null;
-          }
           return DEFAULT_INSTANCE;
-
         }
         case MAKE_IMMUTABLE: {
           argsType_.makeImmutable();
@@ -991,15 +925,12 @@ public final class RpcTransportRequest {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           com.personal.rpc.transport.protocol.protobuf.RpcTransportRequest.Request other = (com.personal.rpc.transport.protocol.protobuf.RpcTransportRequest.Request) arg1;
-          uid_ = visitor.visitString(
-              hasUid(), uid_,
-              other.hasUid(), other.uid_);
-          className_ = visitor.visitString(
-              hasClassName(), className_,
-              other.hasClassName(), other.className_);
-          methodName_ = visitor.visitString(
-              hasMethodName(), methodName_,
-              other.hasMethodName(), other.methodName_);
+          uid_ = visitor.visitString(!uid_.isEmpty(), uid_,
+              !other.uid_.isEmpty(), other.uid_);
+          className_ = visitor.visitString(!className_.isEmpty(), className_,
+              !other.className_.isEmpty(), other.className_);
+          methodName_ = visitor.visitString(!methodName_.isEmpty(), methodName_,
+              !other.methodName_.isEmpty(), other.methodName_);
           argsType_= visitor.visitList(argsType_, other.argsType_);
           argsValue_= visitor.visitList(argsValue_, other.argsValue_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
@@ -1025,25 +956,25 @@ public final class RpcTransportRequest {
                   done = true;
                   break;
                 case 10: {
-                  java.lang.String s = input.readString();
-                  bitField0_ |= 0x00000001;
+                  java.lang.String s = input.readStringRequireUtf8();
+
                   uid_ = s;
                   break;
                 }
                 case 18: {
-                  java.lang.String s = input.readString();
-                  bitField0_ |= 0x00000002;
+                  java.lang.String s = input.readStringRequireUtf8();
+
                   className_ = s;
                   break;
                 }
                 case 26: {
-                  java.lang.String s = input.readString();
-                  bitField0_ |= 0x00000004;
+                  java.lang.String s = input.readStringRequireUtf8();
+
                   methodName_ = s;
                   break;
                 }
                 case 34: {
-                  java.lang.String s = input.readString();
+                  java.lang.String s = input.readStringRequireUtf8();
                   if (!argsType_.isModifiable()) {
                     argsType_ =
                         com.google.protobuf.GeneratedMessageLite.mutableCopy(argsType_);
@@ -1095,10 +1026,9 @@ public final class RpcTransportRequest {
           return parser;
       }
       case GET_MEMOIZED_IS_INITIALIZED: {
-        return memoizedIsInitialized;
+        return (byte) 1;
       }
       case SET_MEMOIZED_IS_INITIALIZED: {
-        memoizedIsInitialized = (byte) (arg0 == null ? 0 : 1);
         return null;
       }
       }

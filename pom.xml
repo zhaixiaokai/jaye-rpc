@@ -13,6 +13,7 @@
         <module>rpc-server</module>
         <module>rpc-core</module>
         <module>rpc-demo</module>
+        <module>rpc-register</module>
     </modules>
 
     <parent>

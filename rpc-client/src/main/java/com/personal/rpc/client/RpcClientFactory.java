@@ -11,9 +11,9 @@ import java.lang.reflect.Proxy;
  * @Date 2019/7/11 8:58 AM
  * @Version 1.0
  **/
-public class RpcClientFactory<I> {
-    public static <I> I getClient(Class<I> iService){
-        I proxy = (I) Proxy.newProxyInstance(RpcClientFactory.class.getClassLoader(),new Class<?>[] { iService },new RpcInvocationHandler<I>(iService));
+public class RpcClientFactory {
+    public static <I> I getClient(Class iService) {
+        I proxy = (I) Proxy.newProxyInstance(RpcClientFactory.class.getClassLoader(), new Class<?>[]{iService}, new RpcInvocationHandler(iService));
         return proxy;
     }
 }

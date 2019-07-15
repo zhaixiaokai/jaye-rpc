@@ -1,0 +1,12 @@
+syntax = "proto3"; // PB协议版本
+
+option optimize_for = SPEED;
+
+option java_package = "com.personal.rpc.demo.model"; // 生成类的包名
+option java_outer_classname = "HandleResult"; // 生成类的类名
+option java_multiple_files = true;
+message Result {
+    int32 code = 1;
+    string message = 2;
+    string exception = 3;
+}

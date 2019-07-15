@@ -13,48 +13,36 @@ public final class RpcTransportResponse {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>required string uid = 1;</code>
-     */
-    boolean hasUid();
-    /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     java.lang.String getUid();
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     com.google.protobuf.ByteString
         getUidBytes();
 
     /**
-     * <code>required bool result = 2;</code>
-     */
-    boolean hasResult();
-    /**
-     * <code>required bool result = 2;</code>
+     * <code>bool result = 2;</code>
      */
     boolean getResult();
 
     /**
-     * <code>optional string errMessage = 3;</code>
-     */
-    boolean hasErrMessage();
-    /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     java.lang.String getErrMessage();
     /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     com.google.protobuf.ByteString
         getErrMessageBytes();
 
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     boolean hasBody();
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     com.google.protobuf.Any getBody();
   }
@@ -70,25 +58,17 @@ public final class RpcTransportResponse {
       uid_ = "";
       errMessage_ = "";
     }
-    private int bitField0_;
     public static final int UID_FIELD_NUMBER = 1;
     private java.lang.String uid_;
     /**
-     * <code>required string uid = 1;</code>
-     */
-    @java.lang.Override
-    public boolean hasUid() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getUid() {
       return uid_;
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -96,84 +76,71 @@ public final class RpcTransportResponse {
       return com.google.protobuf.ByteString.copyFromUtf8(uid_);
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void setUid(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  
       uid_ = value;
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void clearUid() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      
       uid_ = getDefaultInstance().getUid();
     }
     /**
-     * <code>required string uid = 1;</code>
+     * <code>string uid = 1;</code>
      */
     private void setUidBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  checkByteStringIsUtf8(value);
+      
       uid_ = value.toStringUtf8();
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
     private boolean result_;
     /**
-     * <code>required bool result = 2;</code>
-     */
-    @java.lang.Override
-    public boolean hasResult() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required bool result = 2;</code>
+     * <code>bool result = 2;</code>
      */
     @java.lang.Override
     public boolean getResult() {
       return result_;
     }
     /**
-     * <code>required bool result = 2;</code>
+     * <code>bool result = 2;</code>
      */
     private void setResult(boolean value) {
-      bitField0_ |= 0x00000002;
+      
       result_ = value;
     }
     /**
-     * <code>required bool result = 2;</code>
+     * <code>bool result = 2;</code>
      */
     private void clearResult() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      
       result_ = false;
     }
 
     public static final int ERRMESSAGE_FIELD_NUMBER = 3;
     private java.lang.String errMessage_;
     /**
-     * <code>optional string errMessage = 3;</code>
-     */
-    @java.lang.Override
-    public boolean hasErrMessage() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     @java.lang.Override
     public java.lang.String getErrMessage() {
       return errMessage_;
     }
     /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -181,71 +148,72 @@ public final class RpcTransportResponse {
       return com.google.protobuf.ByteString.copyFromUtf8(errMessage_);
     }
     /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     private void setErrMessage(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
       errMessage_ = value;
     }
     /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     private void clearErrMessage() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      
       errMessage_ = getDefaultInstance().getErrMessage();
     }
     /**
-     * <code>optional string errMessage = 3;</code>
+     * <code>string errMessage = 3;</code>
      */
     private void setErrMessageBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+      
       errMessage_ = value.toStringUtf8();
     }
 
     public static final int BODY_FIELD_NUMBER = 4;
     private com.google.protobuf.Any body_;
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     @java.lang.Override
     public boolean hasBody() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return body_ != null;
     }
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.Any getBody() {
       return body_ == null ? com.google.protobuf.Any.getDefaultInstance() : body_;
     }
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     private void setBody(com.google.protobuf.Any value) {
       if (value == null) {
         throw new NullPointerException();
       }
       body_ = value;
-      bitField0_ |= 0x00000008;
+      
       }
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     private void setBody(
         com.google.protobuf.Any.Builder builderForValue) {
       body_ = builderForValue.build();
-      bitField0_ |= 0x00000008;
+      
     }
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeBody(com.google.protobuf.Any value) {
@@ -259,28 +227,28 @@ public final class RpcTransportResponse {
       } else {
         body_ = value;
       }
-      bitField0_ |= 0x00000008;
+      
     }
     /**
-     * <code>optional .google.protobuf.Any body = 4;</code>
+     * <code>.google.protobuf.Any body = 4;</code>
      */
     private void clearBody() {  body_ = null;
-      bitField0_ = (bitField0_ & ~0x00000008);
+      
     }
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (!uid_.isEmpty()) {
         output.writeString(1, getUid());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (result_ != false) {
         output.writeBool(2, result_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!errMessage_.isEmpty()) {
         output.writeString(3, getErrMessage());
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (body_ != null) {
         output.writeMessage(4, getBody());
       }
       unknownFields.writeTo(output);
@@ -292,19 +260,19 @@ public final class RpcTransportResponse {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (!uid_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(1, getUid());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (result_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, result_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!errMessage_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(3, getErrMessage());
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (body_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getBody());
       }
@@ -409,21 +377,14 @@ public final class RpcTransportResponse {
 
 
       /**
-       * <code>required string uid = 1;</code>
-       */
-      @java.lang.Override
-      public boolean hasUid() {
-        return instance.hasUid();
-      }
-      /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       @java.lang.Override
       public java.lang.String getUid() {
         return instance.getUid();
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -431,7 +392,7 @@ public final class RpcTransportResponse {
         return instance.getUidBytes();
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder setUid(
           java.lang.String value) {
@@ -440,7 +401,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder clearUid() {
         copyOnWrite();
@@ -448,7 +409,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>required string uid = 1;</code>
+       * <code>string uid = 1;</code>
        */
       public Builder setUidBytes(
           com.google.protobuf.ByteString value) {
@@ -458,21 +419,14 @@ public final class RpcTransportResponse {
       }
 
       /**
-       * <code>required bool result = 2;</code>
-       */
-      @java.lang.Override
-      public boolean hasResult() {
-        return instance.hasResult();
-      }
-      /**
-       * <code>required bool result = 2;</code>
+       * <code>bool result = 2;</code>
        */
       @java.lang.Override
       public boolean getResult() {
         return instance.getResult();
       }
       /**
-       * <code>required bool result = 2;</code>
+       * <code>bool result = 2;</code>
        */
       public Builder setResult(boolean value) {
         copyOnWrite();
@@ -480,7 +434,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>required bool result = 2;</code>
+       * <code>bool result = 2;</code>
        */
       public Builder clearResult() {
         copyOnWrite();
@@ -489,21 +443,14 @@ public final class RpcTransportResponse {
       }
 
       /**
-       * <code>optional string errMessage = 3;</code>
-       */
-      @java.lang.Override
-      public boolean hasErrMessage() {
-        return instance.hasErrMessage();
-      }
-      /**
-       * <code>optional string errMessage = 3;</code>
+       * <code>string errMessage = 3;</code>
        */
       @java.lang.Override
       public java.lang.String getErrMessage() {
         return instance.getErrMessage();
       }
       /**
-       * <code>optional string errMessage = 3;</code>
+       * <code>string errMessage = 3;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -511,7 +458,7 @@ public final class RpcTransportResponse {
         return instance.getErrMessageBytes();
       }
       /**
-       * <code>optional string errMessage = 3;</code>
+       * <code>string errMessage = 3;</code>
        */
       public Builder setErrMessage(
           java.lang.String value) {
@@ -520,7 +467,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>optional string errMessage = 3;</code>
+       * <code>string errMessage = 3;</code>
        */
       public Builder clearErrMessage() {
         copyOnWrite();
@@ -528,7 +475,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>optional string errMessage = 3;</code>
+       * <code>string errMessage = 3;</code>
        */
       public Builder setErrMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -538,21 +485,21 @@ public final class RpcTransportResponse {
       }
 
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       @java.lang.Override
       public boolean hasBody() {
         return instance.hasBody();
       }
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       @java.lang.Override
       public com.google.protobuf.Any getBody() {
         return instance.getBody();
       }
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       public Builder setBody(com.google.protobuf.Any value) {
         copyOnWrite();
@@ -560,7 +507,7 @@ public final class RpcTransportResponse {
         return this;
         }
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       public Builder setBody(
           com.google.protobuf.Any.Builder builderForValue) {
@@ -569,7 +516,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       public Builder mergeBody(com.google.protobuf.Any value) {
         copyOnWrite();
@@ -577,7 +524,7 @@ public final class RpcTransportResponse {
         return this;
       }
       /**
-       * <code>optional .google.protobuf.Any body = 4;</code>
+       * <code>.google.protobuf.Any body = 4;</code>
        */
       public Builder clearBody() {  copyOnWrite();
         instance.clearBody();
@@ -586,7 +533,6 @@ public final class RpcTransportResponse {
 
       // @@protoc_insertion_point(builder_scope:Response)
     }
-    private byte memoizedIsInitialized = 2;
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
     protected final java.lang.Object dynamicMethod(
@@ -600,19 +546,7 @@ public final class RpcTransportResponse {
           return new Builder();
         }
         case IS_INITIALIZED: {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized == 1) return DEFAULT_INSTANCE;
-          if (isInitialized == 0) return null;
-
-          boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-          if (!hasUid()) {
-            return null;
-          }
-          if (!hasResult()) {
-            return null;
-          }
           return DEFAULT_INSTANCE;
-
         }
         case MAKE_IMMUTABLE: {
           return null;
@@ -620,19 +554,15 @@ public final class RpcTransportResponse {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           com.personal.rpc.transport.protocol.protobuf.RpcTransportResponse.Response other = (com.personal.rpc.transport.protocol.protobuf.RpcTransportResponse.Response) arg1;
-          uid_ = visitor.visitString(
-              hasUid(), uid_,
-              other.hasUid(), other.uid_);
-          result_ = visitor.visitBoolean(
-              hasResult(), result_,
-              other.hasResult(), other.result_);
-          errMessage_ = visitor.visitString(
-              hasErrMessage(), errMessage_,
-              other.hasErrMessage(), other.errMessage_);
+          uid_ = visitor.visitString(!uid_.isEmpty(), uid_,
+              !other.uid_.isEmpty(), other.uid_);
+          result_ = visitor.visitBoolean(result_ != false, result_,
+              other.result_ != false, other.result_);
+          errMessage_ = visitor.visitString(!errMessage_.isEmpty(), errMessage_,
+              !other.errMessage_.isEmpty(), other.errMessage_);
           body_ = visitor.visitMessage(body_, other.body_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
-            bitField0_ |= other.bitField0_;
           }
           return this;
         }
@@ -653,25 +583,25 @@ public final class RpcTransportResponse {
                   done = true;
                   break;
                 case 10: {
-                  java.lang.String s = input.readString();
-                  bitField0_ |= 0x00000001;
+                  java.lang.String s = input.readStringRequireUtf8();
+
                   uid_ = s;
                   break;
                 }
                 case 16: {
-                  bitField0_ |= 0x00000002;
+
                   result_ = input.readBool();
                   break;
                 }
                 case 26: {
-                  java.lang.String s = input.readString();
-                  bitField0_ |= 0x00000004;
+                  java.lang.String s = input.readStringRequireUtf8();
+
                   errMessage_ = s;
                   break;
                 }
                 case 34: {
                   com.google.protobuf.Any.Builder subBuilder = null;
-                  if (((bitField0_ & 0x00000008) != 0)) {
+                  if (body_ != null) {
                     subBuilder = body_.toBuilder();
                   }
                   body_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
@@ -679,7 +609,7 @@ public final class RpcTransportResponse {
                     subBuilder.mergeFrom(body_);
                     body_ = subBuilder.buildPartial();
                   }
-                  bitField0_ |= 0x00000008;
+
                   break;
                 }
                 default: {
@@ -717,10 +647,9 @@ public final class RpcTransportResponse {
           return parser;
       }
       case GET_MEMOIZED_IS_INITIALIZED: {
-        return memoizedIsInitialized;
+        return (byte) 1;
       }
       case SET_MEMOIZED_IS_INITIALIZED: {
-        memoizedIsInitialized = (byte) (arg0 == null ? 0 : 1);
         return null;
       }
       }

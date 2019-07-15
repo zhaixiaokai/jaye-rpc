@@ -1,5 +1,6 @@
 package com.personal.rpc.client;
 
+import com.google.protobuf.Any;
 import com.personal.rpc.client.exception.RpcCallException;
 import com.personal.rpc.client.handlers.NettyChannelPoolHandler;
 import com.personal.rpc.client.util.SyncUtil;
@@ -18,8 +19,9 @@ import io.netty.util.concurrent.FutureListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,7 +32,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Date 2019/7/10 3:19 PM
  * @Version 1.0
  **/
-public class RpcNettyClient {
+public class RpcNettyClient<T> {
     private final static Logger logger = LoggerFactory.getLogger(RpcNettyClient.class);
     private ChannelPoolMap<InetSocketAddress, FixedChannelPool> poolMap;
 
@@ -54,8 +56,8 @@ public class RpcNettyClient {
         return instance;
     }
 
-    public <T> T doRequest() {
-
+    public <T> T doRequest(Class clazz, Method method, List<String> argType, List<? extends Any> args) {
+        Class returnClass= method.getReturnType();
         String uuid = UUID.randomUUID().toString();
         try {
             FixedChannelPool pool = poolMap.get(new InetSocketAddress("127.0.0.1", 8080));
@@ -63,10 +65,10 @@ public class RpcNettyClient {
             final FixedChannelPool finalPool = pool;
 
             RpcTransportRequest.Request request = RpcTransportRequest.Request.newBuilder().setUid(uuid).
-                    setClassName("com.xiaokai.test").
-                    setMethodName("sayhello").
-                    addAllArgsType(new ArrayList<>()).
-                    addAllArgsValue(new ArrayList<>()).
+                    setClassName(clazz.getName()).
+                    setMethodName(method.getName()).
+                    addAllArgsType(argType).
+                    addAllArgsValue(args).
                     build();
             future.addListener(new FutureListener<Channel>() {
                 @Override
@@ -79,21 +81,24 @@ public class RpcNettyClient {
                     }
                 }
             });
-            SyncUtil.setLatchAndWait(uuid,1);
-            return (T) RESPONSE_MAP.get(uuid).getBody();
+            SyncUtil.setLatchAndWait(uuid, 1);
+            if (RESPONSE_MAP != null && RESPONSE_MAP.get(uuid) != null && RESPONSE_MAP.get(uuid).getBody() != null) {
+                return (T) RESPONSE_MAP.get(uuid).getBody().unpack(returnClass);
+            }
+            return null;
         } catch (Exception e) {
-            logger.error("调用发生异常:{}",e);
+            logger.error("调用发生异常:{}", e.getMessage());
             throw new RpcCallException(e.getMessage());
         }
     }
 
     public static void saveResponse(RpcTransportResponse.Response message) {
         if (message != null && message.getUid() != null) {
-            RESPONSE_MAP.put(message.getUid(),message);
+            RESPONSE_MAP.put(message.getUid(), message);
         }
     }
 
-    private <T> T get(){
+    private <T> T get() {
         return null;
     }
 }
