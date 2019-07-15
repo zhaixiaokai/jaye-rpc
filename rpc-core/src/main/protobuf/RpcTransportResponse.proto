@@ -8,6 +8,7 @@ option java_outer_classname = "RpcTransportResponse"; // 生成类的类名
 
 message Response {
     required string uid = 1;
-    optional google.protobuf.Any body = 2;
-
+    required bool result = 2;
+    optional string errMessage = 3;
+    optional google.protobuf.Any body = 4;
 }

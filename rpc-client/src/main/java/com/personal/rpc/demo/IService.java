@@ -8,6 +8,6 @@ package com.personal.rpc.demo;
  * @Version 1.0
  **/
 public interface IService {
-    void greet(String str);
+    String greet(String str);
 
 }

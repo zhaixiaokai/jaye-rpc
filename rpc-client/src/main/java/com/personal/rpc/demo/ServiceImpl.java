@@ -9,7 +9,9 @@ package com.personal.rpc.demo;
  **/
 public class ServiceImpl implements IService {
     @Override
-    public void greet(String str) {
-        System.out.println("hello "+str);
+    public String greet(String str) {
+        String greet = "hello "+str;
+        System.out.println(greet);
+        return greet;
     }
 }

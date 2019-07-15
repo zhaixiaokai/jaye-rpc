@@ -16,7 +16,12 @@ public class DemoEntry {
 
         IService client = RpcClientFactory.getClient(IService.class);
         for (int i = 0; i < 10; i++) {
-            client.greet("xiaokai"+i);
+            try{
+                String ret = client.greet("xiaokai"+i);
+                System.out.println("###########"+ret);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
         System.in.read();
     }

@@ -22,7 +22,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
         logger.debug(String.valueOf(msg));
         RpcTransportRequest.Request request = (RpcTransportRequest.Request) msg;
         this.request = request;
-        RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder().setUid(request.getUid()).build();
+        RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder()
+                .setResult(true)
+                .setUid(request.getUid())
+                .setErrMessage(null).build();
         ctx.writeAndFlush(response);
     }
 
@@ -33,6 +36,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder()
+                .setUid(request.getUid())
+                .setResult(false)
+                .setErrMessage(cause.getMessage())
+                .build();
         cause.printStackTrace();
         ctx.close();
     }

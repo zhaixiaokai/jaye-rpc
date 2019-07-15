@@ -1,5 +1,6 @@
 package com.personal.rpc.client;
 
+import com.personal.rpc.client.exception.RpcCallException;
 import com.personal.rpc.client.handlers.NettyChannelPoolHandler;
 import com.personal.rpc.client.util.SyncUtil;
 import com.personal.rpc.transport.protocol.protobuf.RpcTransportRequest;
@@ -79,13 +80,11 @@ public class RpcNettyClient {
                 }
             });
             SyncUtil.setLatchAndWait(uuid,1);
-
-            System.out.println("该干啥干啥");
-            return (T) RESPONSE_MAP.get(uuid);
+            return (T) RESPONSE_MAP.get(uuid).getBody();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("调用发生异常:{}",e);
+            throw new RpcCallException(e.getMessage());
         }
-        return null;
     }
 
     public static void saveResponse(RpcTransportResponse.Response message) {
