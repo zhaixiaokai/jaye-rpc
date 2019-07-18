@@ -57,6 +57,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
         RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder()
                 .setResult(true)
                 .setUid(uid)
+                .setTimestamp(System.currentTimeMillis())
                 .setBody(Any.pack((Message) ret))
                 .setErrMessage("").build();
         ctx.writeAndFlush(response);
@@ -72,6 +73,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
         RpcTransportResponse.Response response = RpcTransportResponse.Response.newBuilder()
                 .setUid(request.getUid())
                 .setResult(false)
+                .setTimestamp(System.currentTimeMillis())
                 .setErrMessage(cause.toString())
                 .build();
         cause.printStackTrace();

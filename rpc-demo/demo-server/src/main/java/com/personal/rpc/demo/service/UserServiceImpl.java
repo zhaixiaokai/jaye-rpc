@@ -17,9 +17,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Result addUser(User user) {
-        logger.info("call service:UserServiceImpl");
+//        logger.info("call service:UserServiceImpl");
 //        logger.info(JSONObject.toJSONString(user));
-        Result result = Result.newBuilder().setMessage("success").setCode(0).build();
+        Result result = Result.newBuilder().setMessage("success----" + user.getName()).setCode(0).build();
         return result;
     }
 }

@@ -22,10 +22,26 @@ public class RpcInvocationHandler implements InvocationHandler {
 
     Logger logger = LoggerFactory.getLogger(RpcInvocationHandler.class);
     private Class iService;
+    private long timeout;
+    private int retryTime;
 
+    public RpcInvocationHandler(Class iService) {
+        this.iService = iService;
+        this.retryTime = 0;
+        this.timeout = 3000;
+    }
 
-    public RpcInvocationHandler(Class clazz) {
-        this.iService = clazz;
+    public RpcInvocationHandler(Class iService, long timeout) {
+
+        this.iService = iService;
+        this.retryTime = 0;
+        this.timeout = timeout;
+    }
+
+    public RpcInvocationHandler(Class iService, long timeout, int retryTime) {
+        this.iService = iService;
+        this.timeout = timeout;
+        this.retryTime = retryTime;
     }
 
     @Override
@@ -34,15 +50,13 @@ public class RpcInvocationHandler implements InvocationHandler {
         List<Any> argVal = new LinkedList<>();
         if (args != null) {
             for (Object arg : args) {
-                logger.debug("校验参数类型:{}", arg);
-//                if (arg instanceof Message) {
+                if(arg instanceof Message){
                     argVal.add(Any.pack((Message) arg));
-                    argType.add(arg.getClass().getName());
-//                }
-//                throw new RpcCallException("参数必须是Protobuf对应的类");
+                }
+                argType.add(arg.getClass().getName());
             }
         }
-        return RpcNettyClient.getInstance().doRequest(iService, method, argType, argVal);
+        return RpcNettyClient.getInstance().doRequest(iService, method, argType, argVal,this.timeout);
     }
 
 

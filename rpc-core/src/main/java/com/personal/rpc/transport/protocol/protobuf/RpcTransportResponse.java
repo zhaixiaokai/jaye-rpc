@@ -45,6 +45,11 @@ public final class RpcTransportResponse {
      * <code>.google.protobuf.Any body = 4;</code>
      */
     com.google.protobuf.Any getBody();
+
+    /**
+     * <code>int64 timestamp = 5;</code>
+     */
+    long getTimestamp();
   }
   /**
    * Protobuf type {@code Response}
@@ -236,6 +241,30 @@ public final class RpcTransportResponse {
       
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 5;
+    private long timestamp_;
+    /**
+     * <code>int64 timestamp = 5;</code>
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+    /**
+     * <code>int64 timestamp = 5;</code>
+     */
+    private void setTimestamp(long value) {
+      
+      timestamp_ = value;
+    }
+    /**
+     * <code>int64 timestamp = 5;</code>
+     */
+    private void clearTimestamp() {
+      
+      timestamp_ = 0L;
+    }
+
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
@@ -250,6 +279,9 @@ public final class RpcTransportResponse {
       }
       if (body_ != null) {
         output.writeMessage(4, getBody());
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(5, timestamp_);
       }
       unknownFields.writeTo(output);
     }
@@ -275,6 +307,10 @@ public final class RpcTransportResponse {
       if (body_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getBody());
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, timestamp_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -531,6 +567,30 @@ public final class RpcTransportResponse {
         return this;
       }
 
+      /**
+       * <code>int64 timestamp = 5;</code>
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return instance.getTimestamp();
+      }
+      /**
+       * <code>int64 timestamp = 5;</code>
+       */
+      public Builder setTimestamp(long value) {
+        copyOnWrite();
+        instance.setTimestamp(value);
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 5;</code>
+       */
+      public Builder clearTimestamp() {
+        copyOnWrite();
+        instance.clearTimestamp();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:Response)
     }
     @java.lang.Override
@@ -561,6 +621,8 @@ public final class RpcTransportResponse {
           errMessage_ = visitor.visitString(!errMessage_.isEmpty(), errMessage_,
               !other.errMessage_.isEmpty(), other.errMessage_);
           body_ = visitor.visitMessage(body_, other.body_);
+          timestamp_ = visitor.visitLong(timestamp_ != 0L, timestamp_,
+              other.timestamp_ != 0L, other.timestamp_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -610,6 +672,11 @@ public final class RpcTransportResponse {
                     body_ = subBuilder.buildPartial();
                   }
 
+                  break;
+                }
+                case 40: {
+
+                  timestamp_ = input.readInt64();
                   break;
                 }
                 default: {

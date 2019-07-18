@@ -11,4 +11,5 @@ message Response {
     bool result = 2;
     string errMessage = 3;
     google.protobuf.Any body = 4;
+    int64 timestamp = 5;
 }

@@ -74,6 +74,11 @@ public final class RpcTransportRequest {
      * <code>repeated .google.protobuf.Any argsValue = 5;</code>
      */
     int getArgsValueCount();
+
+    /**
+     * <code>int64 timestamp = 6;</code>
+     */
+    long getTimestamp();
   }
   /**
    * Protobuf type {@code Request}
@@ -446,6 +451,30 @@ public final class RpcTransportRequest {
       argsValue_.remove(index);
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 6;
+    private long timestamp_;
+    /**
+     * <code>int64 timestamp = 6;</code>
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+    /**
+     * <code>int64 timestamp = 6;</code>
+     */
+    private void setTimestamp(long value) {
+      
+      timestamp_ = value;
+    }
+    /**
+     * <code>int64 timestamp = 6;</code>
+     */
+    private void clearTimestamp() {
+      
+      timestamp_ = 0L;
+    }
+
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
@@ -463,6 +492,9 @@ public final class RpcTransportRequest {
       }
       for (int i = 0; i < argsValue_.size(); i++) {
         output.writeMessage(5, argsValue_.get(i));
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(6, timestamp_);
       }
       unknownFields.writeTo(output);
     }
@@ -497,6 +529,10 @@ public final class RpcTransportRequest {
       for (int i = 0; i < argsValue_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, argsValue_.get(i));
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, timestamp_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -900,6 +936,30 @@ public final class RpcTransportRequest {
         return this;
       }
 
+      /**
+       * <code>int64 timestamp = 6;</code>
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return instance.getTimestamp();
+      }
+      /**
+       * <code>int64 timestamp = 6;</code>
+       */
+      public Builder setTimestamp(long value) {
+        copyOnWrite();
+        instance.setTimestamp(value);
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 6;</code>
+       */
+      public Builder clearTimestamp() {
+        copyOnWrite();
+        instance.clearTimestamp();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:Request)
     }
     @java.lang.Override
@@ -933,6 +993,8 @@ public final class RpcTransportRequest {
               !other.methodName_.isEmpty(), other.methodName_);
           argsType_= visitor.visitList(argsType_, other.argsType_);
           argsValue_= visitor.visitList(argsValue_, other.argsValue_);
+          timestamp_ = visitor.visitLong(timestamp_ != 0L, timestamp_,
+              other.timestamp_ != 0L, other.timestamp_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
             bitField0_ |= other.bitField0_;
@@ -989,6 +1051,11 @@ public final class RpcTransportRequest {
                   }
                   argsValue_.add(
                       input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry));
+                  break;
+                }
+                case 48: {
+
+                  timestamp_ = input.readInt64();
                   break;
                 }
                 default: {

@@ -23,7 +23,6 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
     Logger logger = LoggerFactory.getLogger(ClientHandler.class);
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        logger.debug(String.valueOf(msg));
         if(msg instanceof RpcTransportResponse.Response){
             RpcTransportResponse.Response response = (RpcTransportResponse.Response) msg;
             RpcNettyClient.saveResponse(response);

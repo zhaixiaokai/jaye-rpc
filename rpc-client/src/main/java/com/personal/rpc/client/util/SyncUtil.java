@@ -28,7 +28,7 @@ public class SyncUtil {
     }
 
     public static void setLatchAndWait(String key, int count, long timeout) throws InterruptedException {
-        setLatchAndWait(key, count, timeout, TimeUnit.SECONDS);
+        setLatchAndWait(key, count, timeout, TimeUnit.MILLISECONDS);
     }
 
     public static void setLatchAndWait(String key, int count, long timeout, TimeUnit timeUnit) throws InterruptedException {
@@ -38,5 +38,9 @@ public class SyncUtil {
 
     public static CountDownLatch getLatch(String key) {
         return latchMap.get(key);
+    }
+
+    public static void deleteLatch(String key){
+        latchMap.remove(key);
     }
 }
